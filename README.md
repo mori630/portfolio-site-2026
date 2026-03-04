@@ -15,12 +15,12 @@
 ・お問い合わせフォーム
 
 ## 4.使用技術
-**Languge**: Java24
- **Framework**: Spring Boot 3.x
- **Database**: H2 Database (開発用)
- **View**: Thymeleaf
- **Infrastructure**: GitHub Pages / Heroku / Render (予定)
- **Tool**: IntelliJ IDEA, Maven, Git,
+- **Languge**: Java24
+- **Framework**: Spring Boot 3.x
+- **Database**: H2 Database (開発用)
+- **View**: Thymeleaf
+- **Infrastructure**: GitHub Pages / Heroku / Render (予定)
+- **Tool**: IntelliJ IDEA, Maven, Git,
 
  ## 5.設計図
  ・画面遷移図

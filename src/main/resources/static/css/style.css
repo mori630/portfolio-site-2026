@@ -221,3 +221,32 @@ button[type="submit"] {
     margin-bottom: 30px;
     font-size: 2rem;
 }
+
+/* =========================================
+   6. フッター関連
+   ========================================= */
+
+footer {
+    padding: 30px 0;
+    text-align: center;
+    background-color: #f9f9f9; /* 背景を少しだけグレーにして区別する */
+    border-top: 1px solid #eee;
+}
+
+.footer-nav {
+    margin-bottom: 10px;
+}
+
+.footer-nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.copyright {
+    font-size: 0.75rem;
+    color: #999;
+    letter-spacing: 0.1em;
+}

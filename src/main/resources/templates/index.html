@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | My Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* デザインの雰囲気（ミニマル・和モダン） */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fcfcfc; /* わずかに温かみのある白 */
+            color: #333;
+            margin: 0;
+            line-height: 1.8;
+        }
+        header {
+            padding: 100px 50px;
+            text-align: center;
+        }
+        h1 {
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            font-size: 2rem;
+            border-bottom: 1px solid #eee;
+            display: inline-block;
+            padding-bottom: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+        }
+        .work-card {
+            margin-bottom: 80px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 40px;
+        }
+        .work-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .tech-stack {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .description {
+            font-size: 0.95rem;
+            color: #555;
+            max-width: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>PORTFOLIO</h1>
+</header>
+
+<main class="container">
+    <div th:each="work : ${works}" class="work-card">
+        <div class="work-title" th:text="${work.title}">作品タイトル</div>
+        <div class="tech-stack" th:text="'Technologies: ' + ${work.techStack}">使用技術</div>
+        <p class="description" th:text="${work.descriptionShort}">説明文（短文）</p>
+
+        <a href="#" style="color: #333; text-decoration: none; border-bottom: 1px solid #333; font-size: 0.8rem;">VIEW DETAILS</a>
+    </div>
+</main>
+
+</body>
+</html>

@@ -161,5 +161,39 @@ h1 {
     background: rgba(0, 0, 0, 0.4); /* 40%の暗さ */
 }
 
+/* フォーム全体の調整 */
+.form-group {
+    margin-bottom: 30px;
+}
 
+.form-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
 
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0; /* カクカクしたデザインに合わせる */
+    font-family: inherit;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* 必須項目の「*」を赤色にする */
+.required {
+    color: red;
+    font-weight: bold;
+    margin-left: 4px; /* ラベルとの間隔を少し開ける */
+}

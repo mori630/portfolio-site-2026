@@ -8,15 +8,54 @@
 
 <body>
 <header>
-    <h1><a href="/" style="text-decoration: none; color: inherit;">PORTFOLIO</a></h1>
-    <nav class="nav-menu">
-        <a href="/">HOME</a>
-    </nav>
-</header>
+    </header>
 
-<main class="container">
-    <h1>CONTACT</h1>
-    <p>お問い合わせページ</p>
-</main>
+    <main class="container" style="max-width: 600px; padding-top: 50px;">
+        <h1>CONTACT ME.</h1>
+        <form th:action="@{/contact/send}" method="post">
+
+            <div class="form-group">
+                <label>お問い合わせの目的 <span class="required">*</span></label>
+                <select name="purpose">
+                    <option value="">選択してください</option>
+                    <option value="work">お仕事の依頼</option>
+                    <option value="other">その他</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>お名前 <span class="required">*</span></label>
+                <input type="text" name="name" placeholder="例：山田 太郎" required>
+            </div>
+
+            <div class="form-group">
+                <label>メールアドレス <span class="required">*</span></label>
+                <input type="email" name="email" placeholder="例：hello@example.jp" required>
+            </div>
+
+            <div class="form-group">
+                <label>ご依頼元企業・団体名</label>
+                <input type="text" name="company" placeholder="例：株式会社〇〇">
+            </div>
+
+            <div class="form-group">
+                <label>役職</label>
+                <input type="text" name="position" placeholder="例：営業部長">
+            </div>
+
+            <div class="form-group">
+                <label>Webサイトなど、URLがあれば教えてください</label>
+                <input type="url" name="url" placeholder="例：https://example.com">
+            </div>
+
+            <div class="form-group">
+                <label>お問い合わせ内容 *</label>
+                <textarea name="message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-detail">SEND MESSAGE</button>
+        </form>
+    </main>
+
 </body>
 </html>

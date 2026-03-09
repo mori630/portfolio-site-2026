@@ -1,0 +1,82 @@
+/* src/main/resources/static/css/style.css */
+
+/* 全体設定 */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased; /* 文字を滑らかに */
+}
+
+/* ヘッダー */
+header {
+    padding: 140px 50px 80px;
+    text-align: center;
+}
+
+h1 {
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+/* メインコンテンツ */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+}
+
+/* 作品カード：リスト形式 */
+.work-card {
+    margin-bottom: 100px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.work-card:hover {
+    opacity: 1;
+}
+
+.work-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    letter-spacing: 0.05em;
+}
+
+.tech-stack {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+/* ボタン：シンプルな下線のみのデザイン */
+.btn-detail {
+    display: inline-block;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-detail:hover {
+    padding-left: 10px; /* ホバー時に少し右に動く遊び心 */
+    color: #888;
+    border-color: #888;
+}

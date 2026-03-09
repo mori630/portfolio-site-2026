@@ -9,6 +9,25 @@
     line-height: 2.0;
 }
 
+.skill-list {
+    list-style: none; /* 点を消す */
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;       /* 横並びにする */
+    flex-wrap: wrap;     /* 折り返し可能にする (レスポンシブデザイン) */
+    gap: 20px;           /* アイテム間の余白 */
+}
+
+.skill-list li {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    background: #f4f4f4; /* 背景色をつける */
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
 html {
     scroll-behavior: smooth;
 }

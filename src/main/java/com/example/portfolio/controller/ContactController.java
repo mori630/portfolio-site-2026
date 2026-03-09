@@ -24,7 +24,12 @@ public class ContactController {
         System.out.println("メール: " + contactForm.getEmail());
         System.out.println("メッセージ: " + contactForm.getMessage());
 
-        //とりあえず送信完了ページにとばす
-        return "redirect:/";
+        //送信完了ページにとばす
+        return "redirect:/contact/thanks";
+    }
+
+    @GetMapping("/contact/thanks")
+    public String thanks() {
+        return "thanks";
     }
 }

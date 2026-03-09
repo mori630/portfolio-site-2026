@@ -1,69 +1,44 @@
-/* src/main/resources/static/css/style.css */
-
-
-/* About */
-.about-content {
-    max-width: 600px;
-    font-size: 0.95rem;
-    color: #333;
-    line-height: 2.0;
-}
-
-.skill-list {
-    list-style: none; /* 点を消す */
+/* =========================================
+   1. リセット & ベース設定
+   ========================================= */
+* {
+    margin: 0;
     padding: 0;
-    margin: 20px 0 0;
-    display: flex;       /* 横並びにする */
-    flex-wrap: wrap;     /* 折り返し可能にする (レスポンシブデザイン) */
-    gap: 20px;           /* アイテム間の余白 */
-}
-
-.skill-list li {
-    font-size: 0.9rem;
-    color: #1a1a1a;
-    background: #f4f4f4; /* 背景色をつける */
-    padding: 5px 15px;
-    border-radius: 4px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
+    box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* 全体設定 */
 body {
     font-family: 'Noto Sans JP', sans-serif;
     background-color: #ffffff;
     color: #1a1a1a;
-    margin: 0;
     line-height: 1.8;
-    -webkit-font-smoothing: antialiased; /* 文字を滑らかに */
+    -webkit-font-smoothing: antialiased;
 }
 
-/* ヘッダー */
-/* src/main/resources/static/css/style.css */
-
+/* =========================================
+   2. ヘッダー
+   ========================================= */
 header {
-    padding: 60px 50px;
-    display: flex;         /* 横並びにする */
-    justify-content: space-between; /* 両端に寄せる */
-    align-items: center;   /* 縦方向の中央揃え */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.nav-menu a {
-    text-decoration: none;
-    color: #1a1a1a;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    margin-left: 30px;     /* メニュー間の余白 */
-    transition: opacity 0.3s;
-}
-
-.nav-menu a:hover {
-    opacity: 0.5;
+/* ロゴ・メニューの文字色を白に変更 */
+h1, .nav-menu a {
+    color: #ffffff;
+    /* 文字に影をつけて、画像の上でも読みやすくする */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
@@ -73,14 +48,85 @@ h1 {
     margin: 0;
 }
 
-/* メインコンテンツ */
+.nav-menu a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-left: 30px;
+    transition: opacity 0.3s;
+}
+
+.nav-menu a:hover {
+    opacity: 0.7; /* ホバー時の見やすさ調整 */
+        color: #ffffff; /* ホバー時も白を維持 */
+}
+
+/* =========================================
+   3. メインビジュアル
+   ========================================= */
+.main-visual {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.main-visual::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   4. コンテンツ共通 & About
+   ========================================= */
 .container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 40px 100px;
+    padding: 100px 40px;
 }
 
-/* 作品カード：リスト形式 */
+.about-content {
+    max-width: 600px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 2.0;
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-list li {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    background: #f4f4f4;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* =========================================
+   5. 作品カード
+   ========================================= */
 .work-card {
     margin-bottom: 100px;
     opacity: 0.9;
@@ -112,7 +158,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* ボタン：シンプルな下線のみのデザイン */
 .btn-detail {
     display: inline-block;
     color: #1a1a1a;
@@ -126,42 +171,14 @@ h1 {
 }
 
 .btn-detail:hover {
-    padding-left: 10px; /* ホバー時に少し右に動く遊び心 */
+    padding-left: 10px;
     color: #888;
     border-color: #888;
 }
 
-.main-visual {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* 画面いっぱいの高さ */
-
-    /* 画像を読み込む */
-    background-image: url('/images/background.jpg');
-
-    /* 背景画像を画面全体に広げる設定 */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff; /* 文字を白にする */
-}
-
-/* 文字を読みやすくするための黒いフィルター */
-.main-visual::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* 40%の暗さ */
-}
-
-/* フォーム全体の調整 */
+/* =========================================
+   6. フォーム関連
+   ========================================= */
 .form-group {
     margin-bottom: 30px;
 }
@@ -180,7 +197,7 @@ h1 {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 0; /* カクカクしたデザインに合わせる */
+    border-radius: 0;
     font-family: inherit;
 }
 
@@ -191,9 +208,16 @@ button[type="submit"] {
     border: none;
 }
 
-/* 必須項目の「*」を赤色にする */
 .required {
     color: red;
     font-weight: bold;
-    margin-left: 4px; /* ラベルとの間隔を少し開ける */
+    margin-left: 4px;
+}
+
+/* Contactページ用のh1調整 */
+.container h1 {
+    color: #1a1a1a !important; /* 強制的に黒にする */
+    text-shadow: none !important; /* 影を消す */
+    margin-bottom: 30px;
+    font-size: 2rem;
 }

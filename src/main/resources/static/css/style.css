@@ -1,5 +1,18 @@
 /* src/main/resources/static/css/style.css */
 
+
+/* About */
+.about-content {
+    max-width: 600px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 2.0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 /* 全体設定 */
 body {
     font-family: 'Noto Sans JP', sans-serif;
@@ -11,9 +24,27 @@ body {
 }
 
 /* ヘッダー */
+/* src/main/resources/static/css/style.css */
+
 header {
-    padding: 140px 50px 80px;
-    text-align: center;
+    padding: 60px 50px;
+    display: flex;         /* 横並びにする */
+    justify-content: space-between; /* 両端に寄せる */
+    align-items: center;   /* 縦方向の中央揃え */
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-left: 30px;     /* メニュー間の余白 */
+    transition: opacity 0.3s;
+}
+
+.nav-menu a:hover {
+    opacity: 0.5;
 }
 
 h1 {

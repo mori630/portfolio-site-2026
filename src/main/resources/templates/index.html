@@ -12,9 +12,25 @@
 
 <header>
     <h1>PORTFOLIO</h1>
+    <nav class="nav-menu">
+        <a href="#projects">PROJECTS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#">CONTACT</a>
+    </nav>
 </header>
 
-<main class="container">
+<section id="about" class="container" style="padding-top: 100px;">
+    <h2 style="font-size: 1.2rem; margin-bottom: 40px; letter-spacing: 0.1em;">ABOUT</h2>
+    <div class="about-content">
+        <p>
+            私は Java と Spring Boot を中心に開発を行っているエンジニアです。<br>
+            シンプルで機能的なウェブサイトの設計と実装を信条としています。<br>
+            技術を通じて、誰かの日常を少しだけ豊かにすることを目指しています。
+        </p>
+    </div>
+</section>
+
+<main class="container" id="projects">
     <div th:each="work : ${works}" class="work-card">
 
         <div class="work-title" th:text="${work.title}">作品タイトル</div>

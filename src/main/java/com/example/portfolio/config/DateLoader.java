@@ -14,24 +14,36 @@ public class DateLoader implements CommandLineRunner {
     private final WorkRepository repository;
 
     //リポジトリを使えるようにする
-public DateLoader(WorkRepository repository) {
-    this.repository = repository;
-}
+    public DateLoader(WorkRepository repository) {
+        this.repository = repository;
+    }
 
-@Override
-    public void run(String...args) throws Exception {
-    //一件目のデータを作成
-    Work work1 = new Work();
-    work1.setTitle("私のポートフォリオサイト");
-    work1.setDescriptionShort("Spring Bootで作成した自己紹介サイトです。");
-    work1.setDescriptionDetail("このサイトは、自分のスキルを証明するために作成しました。ER図による設計から始め、GitHubでの管理も行っています。");
-    work1.setTechStack("Java, Spring Boot, Thymeleaf, H2 Database");
-    work1.setDifficulties("Gitの競合（コンフリクト）の解決に苦労しました。");
-    work1.setSolutions("一つずつコマンドを確認し、強制Pushなどの仕組みを理解することで解決しました。");
-    work1.setGithubUrl("https://github.com/mori630/portfolio-site-2026");
+    @Override
+    public void run(String... args) throws Exception {
+        // 1つ目の作品
+        Work work1 = new Work();
+        work1.setTitle("私のポートフォリオサイト");
+        work1.setDescriptionShort("Java/Spring Bootで構築した作品一覧サイトです。");
+        work1.setDescriptionDetail("詳細な設計から実装までを一貫して行いました。");
+        work1.setTechStack("Java, Spring Boot, Thymeleaf, H2");
+        work1.setDifficulties("特になし");
+        work1.setSolutions("特になし");
+        work1.setGithubUrl("https://github.com/mori630/portfolio-site-2026");
+        repository.save(work1);
 
-    repository.save(work1);
+        /* 2つ目の作品（作品が増えていくにつれてコピーして追加していく）
+        Work work2 = new Work();
+        work2.setTitle("新しいプロジェクト名");
+        work2.setDescriptionShort("簡単な説明...");
+        work2.setDescriptionDetail("詳細なこだわりポイント...");
+        work2.setTechStack("Java, Spring Boot...");
+        work2.setDifficulties("苦労したこと...");
+        work2.setSolutions("解決策...");
+        work2.setGithubUrl("https://github.com/...");
+        repository.save(work2);
 
-    System.out.println("初期データの登録が完了しました");
-}
+        System.out.println("✅ 初期データの登録が完了しました！");
+         */
+
+    }
 }

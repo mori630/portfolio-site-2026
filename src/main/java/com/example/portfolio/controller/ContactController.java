@@ -1,6 +1,9 @@
 package com.example.portfolio.controller;
 
 import com.example.portfolio.form.ContactForm;
+import jakarta.validation.Valid;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ContactController {
 
     @GetMapping("/contact")
-    public String contact() {
+    public String contact(Model model) {
+        //空のフォームを画面に渡す
+        model.addAttribute("contactForm", new ContactForm());
         return "contact";   // templatesフォルダ内の contact.html を表示する
     }
 
@@ -22,7 +27,11 @@ public class ContactController {
 
     //フォームからの送信を受け取る
     @PostMapping("/contact/send")
-    public String send(@ModelAttribute ContactForm contactForm) {
+    public String send(@Valid @ModelAttribute ContactForm contactForm, BindingResult bindingResult) {
+        //もしエラーがあれば、送信せずにフォーム画面へ戻る
+        if (bindingResult.hasErrors()){
+            return "contact";
+        }
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("自分のメールアドレス"); // 送信先
         message.setSubject("【ポートフォリオより】: " + contactForm.getName() + "様からのお問い合わせ");

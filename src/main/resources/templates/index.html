@@ -16,11 +16,13 @@
 
 <main class="container">
     <div th:each="work : ${works}" class="work-card">
+
         <div class="work-title" th:text="${work.title}">作品タイトル</div>
         <div class="tech-stack" th:text="'Technologies: ' + ${work.techStack}">使用技術</div>
         <p class="description" th:text="${work.descriptionShort}">説明文（短文）</p>
 
-        <a href="#" style="color: #333; text-decoration: none; border-bottom: 1px solid #333; font-size: 0.8rem;">VIEW DETAILS</a>
+        <a th:href="@{/work/{id}(id=${work.id})}" class="btn-detail">VIEW DETAILS</a>
+
     </div>
 </main>
 

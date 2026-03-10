@@ -19,49 +19,54 @@
     </nav>
 </header>
 
-<section class="main-visual">
-    <div style="position: relative; z-index: 1; text-align: center;">
-        <p>To create GOLD,</p>
-        <h1 style="font-size: 5rem; margin: 0;">DESIGNING<br>BRAND.</h1>
-    </div>
-</section>
+    <section class="main-visual full-screen-section">
+        <div style="position: relative; z-index: 1; text-align: center;">
+            <p>To create GOLD,</p>
+            <h1 style="font-size: 5rem; margin: 0;">DESIGNING<br>BRAND.</h1>
+        </div>
+    </section>
 
-<section id="about" class="container" style="padding-top: 100px;">
-    <h2 style="font-size: 1.2rem; margin-bottom: 40px; letter-spacing: 0.1em;">ABOUT</h2>
-    <div class="about-content">
-        <p>
-            私は Java と Spring Boot を中心に開発を行っているエンジニアです。<br>
-            シンプルで機能的なウェブサイトの設計と実装を信条としています。<br>
-            技術を通じて、誰かの日常を少しだけ豊かにすることを目指しています。
-        </p>
-    </div>
+    <section id="about" class="full-screen-section">
+        <div class="container">
+                <h2>ABOUT</h2>
+            <div class="about-content">
+                <p>
+                    私は Java と Spring Boot を中心に開発を行っているエンジニアです。<br>
+                    シンプルで機能的なウェブサイトの設計と実装を信条としています。<br>
+                    技術を通じて、誰かの日常を少しだけ豊かにすることを目指しています。
+                </p>
+            </div>
+        </div>
+    </section>
 
-    <div class="skill-container">
-        <h3 style="font-size: 0.8rem; letter-spacing: 0.1em; color: #888; margin-top: 40px;">SKILLS</h3>
-        <ul class="skill-list">
-            <li>Java</li>
-            <li>Spring Boot</li>
-            <li>Thymeleaf</li>
-            <li>SQL (H2 / MySQL)</li>
-            <li>HTML / CSS</li>
-            <li>Git / GitHub</li>
-        </ul>
-    </div>
+    <section id="projects" class="full-screen-section">
+        <div class="container">
+            <h2>PROJECTS</h2>
+            <div th:each="work : ${works}" class="work-card">
+                <div class="work-title" th:text="${work.title}">作品タイトル</div>
+                <div class="tech-stack" th:text="'Technologies: ' + ${work.techStack}">使用技術</div>
+                <p class="description" th:text="${work.descriptionShort}">説明文（短文）</p>
+                <a th:href="@{/work/{id}(id=${work.id})}" class="btn-detail">VIEW DETAILS</a>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <section id="skills" class="full-screen-section skills-section">
+        <div class="container">
+            <h2>SKILLS</h2>
+            <ul class="skill-list">
+                <li>Java</li>
+                <li>Spring Boot</li>
+                <li>Thymeleaf</li>
+                <li>SQL (H2 / MySQL)</li>
+                <li>HTML / CSS</li>
+                <li>Git / GitHub</li>
+            </ul>
+        </div>
+    </section>
 
-<main class="container" id="projects">
-    <div th:each="work : ${works}" class="work-card">
 
-        <div class="work-title" th:text="${work.title}">作品タイトル</div>
-        <div class="tech-stack" th:text="'Technologies: ' + ${work.techStack}">使用技術</div>
-        <p class="description" th:text="${work.descriptionShort}">説明文（短文）</p>
-
-        <a th:href="@{/work/{id}(id=${work.id})}" class="btn-detail">VIEW DETAILS</a>
-    </div>
-</main>
-
-<footer>
+<footer class="full-screen-section">
     <div class="container">
         <nav class="footer-nav">
             <a href="#projects">PROJECTS</a>
@@ -71,6 +76,28 @@
         <p class="copyright">&copy; 2026 Mori Hikaru.</p>
     </div>
 </footer>
+
+<script>
+    const sections = document.querySelectorAll('.full-screen-section, .main-visual, footer');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            } else {
+                entry.target.style.opacity = "0";
+                entry.target.style.transform = "translateY(20px)";
+            }
+        });
+    }, { threshold: 0.6 });
+
+    sections.forEach(section => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(20px)";
+        observer.observe(section);
+    });
+</script>
 
 </body>
 </html>

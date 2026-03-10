@@ -1,252 +1,79 @@
 /* =========================================
    1. リセット & ベース設定
    ========================================= */
-* {
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-html {
+    scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    overflow-y: scroll;
 }
 
 body {
     font-family: 'Noto Sans JP', sans-serif;
-    background-color: #ffffff;
     color: #1a1a1a;
     line-height: 1.8;
-    -webkit-font-smoothing: antialiased;
 }
 
 /* =========================================
-   2. ヘッダー
+   2. スナップ対象の共通設定
+   ========================================= */
+.main-visual,
+.full-screen-section,
+footer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    position: relative;
+    overflow: hidden; /* スナップ時は隠す */
+
+                    /* --- アニメーション部分 --- */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+        opacity: 1; /* 通常時は見える状態に */
+        transform: translateY(0);
+}
+
+/* 表示された時の状態（クラス名は後でJSで付け替える用） */
+.full-screen-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   3. 各セクションの背景・個別設定
+   ========================================= */
+#about { background-color: #ffffff; }
+#projects { background-color: #fafafa; overflow-y: auto; } /* 中身のスクロール許可 */
+#skills { background-color: #f4f4f4; }
+footer { background-color: #f9f9f9; }
+
+/* =========================================
+   4. その他のデザイン（残りは既存のものを配置）
    ========================================= */
 header {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
+    top: 0; left: 0; width: 100%; z-index: 10;
     padding: 30px 50px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
-/* ロゴ・メニューの文字色を白に変更 */
-h1, .nav-menu a {
-    color: #ffffff;
-    /* 文字に影をつけて、画像の上でも読みやすくする */
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
+h1, .nav-menu a { color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+.nav-menu a { margin-left: 30px; text-decoration: none; font-size: 0.8rem; }
 
-h1 {
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    font-size: 1.8rem;
-    margin: 0;
-}
-
-.nav-menu a {
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    margin-left: 30px;
-    transition: opacity 0.3s;
-}
-
-.nav-menu a:hover {
-    opacity: 0.7; /* ホバー時の見やすさ調整 */
-        color: #ffffff; /* ホバー時も白を維持 */
-}
-
-/* =========================================
-   3. メインビジュアル
-   ========================================= */
 .main-visual {
-    position: relative;
-    width: 100%;
-    height: 100vh;
     background-image: url('/images/background.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
 }
 
-.main-visual::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-}
-
-/* =========================================
-   4. コンテンツ共通 & About
-   ========================================= */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 100px 40px;
-}
-
-.about-content {
-    max-width: 600px;
-    font-size: 0.95rem;
-    color: #333;
-    line-height: 2.0;
-}
-
-.skill-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.skill-list li {
-    font-size: 0.9rem;
-    color: #1a1a1a;
-    background: #f4f4f4;
-    padding: 5px 15px;
-    border-radius: 4px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-}
-
-/* =========================================
-   5. 作品カード
-   ========================================= */
-.work-card {
-    margin-bottom: 100px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-.work-card:hover {
-    opacity: 1;
-}
-
-.work-title {
-    font-size: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 15px;
-    letter-spacing: 0.05em;
-}
-
-.tech-stack {
-    font-size: 0.75rem;
-    color: #999;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    letter-spacing: 0.1em;
-}
-
-.description {
-    font-size: 0.9rem;
-    color: #444;
-    margin-bottom: 30px;
-}
-
-.btn-detail {
-    display: inline-block;
-    color: #1a1a1a;
-    text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    border-bottom: 1px solid #1a1a1a;
-    padding-bottom: 5px;
-    transition: all 0.3s ease;
-}
-
-.btn-detail:hover {
-    padding-left: 10px;
-    color: #888;
-    border-color: #888;
-}
-
-/* =========================================
-   6. フォーム関連
-   ========================================= */
-.form-group {
-    margin-bottom: 30px;
-}
-
-.form-group label {
-    display: block;
-    font-weight: bold;
-    font-size: 0.8rem;
-    margin-bottom: 8px;
-    letter-spacing: 0.05em;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 0;
-    font-family: inherit;
-}
-
-button[type="submit"] {
-    margin-top: 20px;
-    cursor: pointer;
-    background: none;
-    border: none;
-}
-
-.required {
-    color: red;
-    font-weight: bold;
-    margin-left: 4px;
-}
-
-/* Contactページ用のh1調整 */
-.container h1 {
-    color: #1a1a1a !important; /* 強制的に黒にする */
-    text-shadow: none !important; /* 影を消す */
-    margin-bottom: 30px;
-    font-size: 2rem;
-}
-
-/* =========================================
-   6. フッター関連
-   ========================================= */
-
-footer {
-    padding: 30px 0;
-    text-align: center;
-    background-color: #f9f9f9; /* 背景を少しだけグレーにして区別する */
-    border-top: 1px solid #eee;
-}
-
-.footer-nav {
-    margin-bottom: 10px;
-}
-
-.footer-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #1a1a1a;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.copyright {
-    font-size: 0.75rem;
-    color: #999;
-    letter-spacing: 0.1em;
-}
+.container { width: 100%; max-width: 800px; display: flex; flex-direction: column; align-items: center; }
+.work-card { text-align: center; margin: 20px 0; }
